@@ -6,6 +6,7 @@ import Home from './home'
 import Login from './login'
 import Register from './register'
 import Dashboard from './dashboard'
+import Organisations from './organisations'
 import { logout } from '../helpers/auth'
 import { firebaseAuth } from '../config/constants'
 
@@ -64,8 +65,11 @@ export default class App extends Component {
                 <li className="nav-item">
                   <Link className="nav-link" to="/">Home</Link>
                 </li> 
-                {this.state.authed
-                  ? 
+                {this.state.authed ?
+                  <li className="nav-item"><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
+                  : ''
+                }
+                {this.state.authed ? 
                       <button
                         // style={{border: 'none', background: 'transparent'}}
                         className="btn btn-outline"
@@ -91,6 +95,7 @@ export default class App extends Component {
               <PublicRoute authed={this.state.authed} path='/login' component={Login} />
               <PublicRoute authed={this.state.authed} path='/register' component={Register} />
               <PrivateRoute authed={this.state.authed} path='/dashboard' component={Dashboard} />
+              <PrivateRoute authed={this.state.authed} path='/organisations' component={Organisations} />
               <Route render={() => <h2>404</h2>} />
             </Switch>
           </div>
