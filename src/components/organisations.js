@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 // organisations.js
 
-import Card from './card'
+import EditableOrgList from './editableOrgList'
 
 export default class Organisations extends Component {
 	constructor(){
@@ -37,7 +37,17 @@ export default class Organisations extends Component {
 				</div>
 				<div className="row">
 					<div className="col">
-						<div className="card-deck">
+						<div className="table-responsive">
+							<table className="table table-striped">
+								<thead>
+									<tr>
+										<td>ID</td>
+										<td>Name</td>
+										<td>Description</td>
+									</tr>
+									<EditableOrgList />					
+								</thead>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -45,3 +55,4 @@ export default class Organisations extends Component {
 		)
 	}
 }
+
